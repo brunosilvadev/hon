@@ -44,10 +44,25 @@
     </svg>
 
   </div>
-  <ul *ngIf="samples && samples.length">
-    <li *ngFor="let sample of samples">
-      Sample ID: {{sample.sampleId}} - Sample Name: {{sample.sampleName}}
-    </li>
-  </ul>
+  <br/>
+  <div class="container" *ngIf="samples && samples.length">
+    <div class="row" *ngFor="let sample of samples">
+      <div class="col">{{sample.sampleName}}</div>
+      <div class="col">{{sample.sampleId}}</div>
+    </div>
+  </div>
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="sampleName" class="form-label">Name</label>
+      <input type="text" class="form-control" id="name" formControlName="sampleName" placeholder="Enter name">
+    </div>
+    <div class="mb-3">
+      <label for="sampleId" class="form-label">Id</label>
+      <input type="email" class="form-control" id="email" formControlName="sampleId" placeholder="Enter email">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  
+  
 
 <router-outlet></router-outlet>

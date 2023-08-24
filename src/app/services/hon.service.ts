@@ -16,4 +16,9 @@ export class HonService {
   {
     return await lastValueFrom(this.client.get<Sample[]>(this.baseUri + 'list'));
   }
+
+  async addSample(sample:Sample)
+  {
+    return await lastValueFrom(this.client.post(this.baseUri + 'create',sample));
+  }
 }
