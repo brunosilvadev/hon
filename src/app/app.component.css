@@ -41,21 +41,6 @@
     margin: 0 16px;
   }
 
-  .toolbar #twitter-logo {
-    height: 40px;
-    margin: 0 8px;
-  }
-
-  .toolbar #youtube-logo {
-    height: 40px;
-    margin: 0 16px;
-  }
-
-  .toolbar #twitter-logo:hover,
-  .toolbar #youtube-logo:hover {
-    opacity: 0.8;
-  }
-
   .content {
     display: flex;
     margin: 82px auto 32px;
@@ -90,8 +75,8 @@
     border-radius: 4px;
     border: 1px solid #eee;
     background-color: #fafafa;
-    height: 40px;
-    width: 200px;
+    min-height: 100px;
+    width: 315px;
     margin: 0 8px 16px;
     padding: 16px;
     display: flex;
@@ -100,6 +85,10 @@
     align-items: center;
     transition: all 0.2s ease-in-out;
     line-height: 24px;
+  }
+
+  #soon {
+    transform: translateY(-25%);
   }
 
   .card-container .card:not(:last-child) {
@@ -142,4 +131,22 @@
 
 .dynamic-height {
   min-height: 150px;  
+}
+
+
+.card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+  font-size: 1.5rem;
+}
+
+.card-text {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+.progress-bar {
+  background-color: #4CAF50;
 }

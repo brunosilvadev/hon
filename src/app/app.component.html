@@ -13,9 +13,17 @@
     </div>
   </div>
   
+
+  <div id="soon" class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+    <div class="card">
+      <div class="card-body">
+        <h6 class="card-title">🚧 Under construction 🚧</h6>
+        <p class="card-text">Homeowner Notebook is coming soon. Stay tuned!</p>
+      </div>
+    </div>
+  </div>
   
-  
-  <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+  <form *ngIf="cards && cards.length" [formGroup]="myForm" (ngSubmit)="onSubmit()">
     <div class="mb-3">
       <label for="cardName" class="form-label">Name</label>
       <input type="text" class="form-control" id="name"
