@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HonService } from './services/hon.service';
 import { Sample } from './models/sample';
 import { FormGroup, FormControl } from '@angular/forms';
+import { Card } from './models/card';
 
 @Component({
   selector: 'app-root',
@@ -12,31 +13,36 @@ export class AppComponent implements  OnInit{
   constructor(private honService:HonService){}
 
   myForm = new FormGroup({
-    sampleName: new FormControl(''),
-    sampleId: new FormControl(''),
+    cardName: new FormControl(''),
+    cardContent: new FormControl(''),
   });
 
-  title = 'hon';
+  title = 'Homeowner Notebook';
   samples:Sample[] = [];
+  cards:Card[] = [];
 
   ngOnInit() {
     this.honService.getSamples().then(data => {
       this.samples = data;
     });
+    this.honService.ListCards().then(data => {
+      this.cards = data;
+    })
   }
 
   onSubmit() {
-    // Logic to handle form submission
-    console.log(this.myForm.value);
     const formValue = this.myForm.value;
-    const sample:Sample = {
-      sampleId: formValue.sampleId !== null && formValue.sampleId !== undefined
-          ? +formValue.sampleId
-          : 0,
-      sampleName: formValue.sampleName || ''
+
+    const card:Card = {
+      cardId: this.cards[this.cards.length - 1].cardId + 1,
+      cardName: formValue.cardName || '',
+      cardContent: formValue.cardContent || '',
+      categoryid: 0
     };
-    this.honService.addSample(sample).then(
+    
+    this.honService.addCard(card).then(
       () => {
+        this.myForm.reset();
         this.ngOnInit();
       }
     )

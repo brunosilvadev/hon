@@ -1,7 +1,8 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Sample } from '../models/sample';
 import { lastValueFrom } from 'rxjs';
+import { Card } from '../models/card';
 
 @Injectable({
   providedIn: 'root'
@@ -21,4 +22,15 @@ export class HonService {
   {
     return await lastValueFrom(this.client.post(this.baseUri + 'create',sample));
   }
+
+  async addCard(card:Card)
+  {
+    return await lastValueFrom(this.client.post(this.baseUri + 'add-card',card));
+  }
+
+  async ListCards()
+  {
+    return await lastValueFrom(this.client.get<Card[]>(this.baseUri + 'cards'));
+  }
+
 }
