@@ -14,8 +14,8 @@
   </div>
   
 
-  <div id="soon" class="d-flex justify-content-center align-items-center" style="height: 100vh;">
-    <div class="card">
+  <div id="soon" *ngIf="!cards" class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+    <div class="card" id="soon-2">
       <div class="card-body">
         <h6 class="card-title">🚧 Under construction 🚧</h6>
         <p class="card-text">Homeowner Notebook is coming soon. Stay tuned!</p>
