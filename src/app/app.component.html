@@ -1,17 +1,39 @@
 <div class="content" role="main">
   <br/>
+
   <div class="container mt-4" *ngIf="cards && cards.length">
     <div class="row">
       <div class="col-md-3 mb-4 me-5" *ngFor="let card of cards">
-        <div class="card dynamic-height">
-          <div class="card-body scrollable-content">
-            <h5 class="card-title">{{card.cardId}} - {{card.cardName}}</h5>
-            <p class="card-text">{{card.cardContent}}</p>
+        <div class="card dynamic-height position-relative">
+          <div class="card-body scrollable-content pt-5"> <!-- Padding at the top -->
+            <!-- ID container -->
+            <div class="position-absolute text-white bg-secondary rounded-circle p-1 fs-6" style="top: 25px; left: 32px; width: 25px; height: 25px; display: flex; align-items: center; justify-content: center;">
+              {{card.cardId}}
+            </div>
+            <!-- Subtitle for category -->
+
+            <!-- Title -->
+            <h5 class="card-title mt-1">
+              {{card.cardName}}
+            </h5>
+            <!-- Content -->
+            <p class="card-text">
+              {{card.cardContent}}
+            </p>
+            <div class="border border-rounded text-secondary rounded p-1 mt-3 mb-4" > <!-- New container -->
+              <h6 class="card-subtitle mx-2 font-weight-bold" > <!-- Removed margin-bottom -->
+                {{card.category?.categoryName}}
+              </h6>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+  
+  
+  
+
   
 
   <div id="soon" *ngIf="!cards" class="d-flex justify-content-center align-items-center" style="height: 100vh;">
