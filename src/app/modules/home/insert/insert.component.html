@@ -1,0 +1,22 @@
+<form  [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="cardName" class="form-label">Name</label>
+      <input type="text" class="form-control" id="name"
+        formControlName="cardName" placeholder="Enter name">
+    </div>
+    <div class="mb-3">
+      <label for="cardContent" class="form-label">Content</label>
+      <input type="text" class="form-control" id="content"
+        formControlName="cardContent" placeholder="Enter content">
+    </div>
+    <div class="mb-3">
+      <label for="cardCategory" class="form-label">Category</label>
+      <select class="form-control" id="category" formControlName="cardCategory">
+        <option value="" disabled>Select Category</option>
+        <option *ngFor="let category of categories" [value]="category.categoryId">
+          {{ category.categoryName }}
+        </option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>

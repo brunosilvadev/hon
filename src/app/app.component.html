@@ -1,64 +1,8 @@
 <div class="content" role="main">
   <br/>
+<timeline></timeline>
 
-  <div class="container mt-4" *ngIf="cards && cards.length">
-    <div class="row">
-      <div class="col-md-3 mb-4 me-5" *ngFor="let card of cards">
-        <div class="card dynamic-height position-relative">
-          <div class="card-body scrollable-content pt-5"> <!-- Padding at the top -->
-            <!-- ID container -->
-            <div class="position-absolute text-white bg-secondary rounded-circle p-1 fs-6" style="top: 25px; left: 32px; width: 25px; height: 25px; display: flex; align-items: center; justify-content: center;">
-              {{card.cardId}}
-            </div>
-            <!-- Subtitle for category -->
-
-            <!-- Title -->
-            <h5 class="card-title mt-1">
-              {{card.cardName}}
-            </h5>
-            <!-- Content -->
-            <p class="card-text">
-              {{card.cardContent}}
-            </p>
-            <div class="border border-rounded text-secondary rounded p-1 mt-3 mb-4" > <!-- New container -->
-              <h6 class="card-subtitle mx-2 font-weight-bold" > <!-- Removed margin-bottom -->
-                {{card.category?.categoryName}}
-              </h6>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  
-  
-
-  
-
-  <div id="soon" *ngIf="!cards" class="d-flex justify-content-center align-items-center" style="height: 100vh;">
-    <div class="card" id="soon-2">
-      <div class="card-body">
-        <h6 class="card-title">🚧 Under construction 🚧</h6>
-        <p class="card-text">Homeowner Notebook is coming soon. Stay tuned!</p>
-      </div>
-    </div>
-  </div>
-  
-  <form *ngIf="cards && cards.length" [formGroup]="myForm" (ngSubmit)="onSubmit()">
-    <div class="mb-3">
-      <label for="cardName" class="form-label">Name</label>
-      <input type="text" class="form-control" id="name"
-        formControlName="cardName" placeholder="Enter name">
-    </div>
-    <div class="mb-3">
-      <label for="cardContent" class="form-label">Content</label>
-      <input type="text" class="form-control" id="content"
-        formControlName="cardContent" placeholder="Enter content">
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
-  
+</div>
   
 
 <router-outlet></router-outlet>

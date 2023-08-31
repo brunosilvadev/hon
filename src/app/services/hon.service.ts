@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Sample } from '../models/sample';
 import { lastValueFrom } from 'rxjs';
 import { Card } from '../models/card';
+import { Category } from '../models/category';
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +32,11 @@ export class HonService {
   async ListCards()
   {
     return await lastValueFrom(this.client.get<Card[]>(this.baseUri + 'cards'));
+  }
+
+  async ListCategories()
+  {
+    return await lastValueFrom(this.client.get<Category[]>(this.baseUri + 'categories'));
   }
 
 }
