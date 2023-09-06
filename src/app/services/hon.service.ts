@@ -14,6 +14,8 @@ export class HonService {
 
   constructor(private client:HttpClient) { }
 
+  cards:Card[] = [];
+
   async getSamples()
   {
     return await lastValueFrom(this.client.get<Sample[]>(this.baseUri + 'list'));

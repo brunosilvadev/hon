@@ -1,0 +1,27 @@
+
+
+    <!-- Large Button to Trigger Modal -->
+<button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#myModal">
+    New Card
+  </button>
+  
+  <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">New Card</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <insert></insert>
+        </div>
+        <div class="modal-footer">
+          <button type="button" #closeButton class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary" (click)="submitForm()">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<div *ngIf="!popup">
+    <timeline></timeline>
+</div>

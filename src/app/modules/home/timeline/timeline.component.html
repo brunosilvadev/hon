@@ -23,15 +23,11 @@
 	</div>
 </div>
 
-<div id="soon" *ngIf="!cards" class="d-flex justify-content-center align-items-center">
+<div id="soon" *ngIf="!cards || cards.length < 1" class="d-flex justify-content-center align-items-center">
 	<div class="card" id="soon-2">
 		<div class="card-body">
 			<h6 class="card-title">🚧 Under construction 🚧</h6>
 			<p class="card-text">Homeowner Notebook is coming soon. Stay tuned!</p>
 		</div>
 	</div>
-</div>
-
-<div *ngIf="cards && cards.length">
-	<insert [cards]="cards"></insert>
 </div>

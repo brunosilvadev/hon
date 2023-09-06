@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
 import { Card } from 'src/app/models/card';
-import { Sample } from 'src/app/models/sample';
 import { HonService } from 'src/app/services/hon.service';
 
 @Component({
@@ -16,10 +14,17 @@ export class TimelineComponent implements OnInit{
 
   cards:Card[] = [];
 
-  ngOnInit() {
+  async refreshCardList()
+  {
     this.honService.ListCards().then(data => {
-      this.cards = data;
-    });
+      this.honService.cards = data;
+      this.cards = this.honService.cards;
+      console.log(this.cards.length);
+    })
+    .catch();
+  }
+  ngOnInit() {
+    this.refreshCardList();
   }
 
 }

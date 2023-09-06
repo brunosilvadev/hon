@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Card } from 'src/app/models/card';
 import { Category } from 'src/app/models/category';
@@ -11,8 +11,6 @@ import { HonService } from 'src/app/services/hon.service';
 })
 export class InsertComponent implements OnInit{
   constructor(private honService:HonService){}
-
-  @Input() cards: Card[] = [];
 
   categories:Category[] = [];
 
@@ -28,11 +26,11 @@ ngOnInit(): void {
   });
 }
 
-  onSubmit() {
+  async onSubmit() {
     const formValue = this.myForm.value;
 
     const card:Card = {
-      cardId: this.cards[this.cards.length - 1].cardId + 1,
+      cardId: this.honService.cards[this.honService.cards.length - 1].cardId + 1,
       cardName: formValue.cardName || '',
       cardContent: formValue.cardContent || '',
       categoryid: 0
@@ -41,7 +39,6 @@ ngOnInit(): void {
     this.honService.addCard(card).then(
       () => {
         this.myForm.reset();
-        //this.ngOnInit();
       }
     )
   }
