@@ -18,4 +18,21 @@ describe('AddButtonComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should have view child references defined', () => {
+    fixture.detectChanges();
+    expect(component.insertComponent).toBeDefined();
+    expect(component.timelineComponent).toBeDefined();
+  });
+  
+  it('should call onSubmit and refreshCardList when submitForm is called', async () => {
+    const insertComponentSpy = spyOn(component.insertComponent, 'onSubmit').and.returnValue(Promise.resolve());
+    const timelineComponentSpy = spyOn(component.timelineComponent, 'refreshCardList');
+  
+    await component.submitForm();
+  
+    expect(insertComponentSpy).toHaveBeenCalled();
+    expect(timelineComponentSpy).toHaveBeenCalled();
+  });
+    
 });
