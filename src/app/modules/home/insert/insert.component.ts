@@ -33,7 +33,7 @@ ngOnInit(): void {
       cardId: this.honService.cards[this.honService.cards.length - 1].cardId + 1,
       cardName: formValue.cardName || '',
       cardContent: formValue.cardContent || '',
-      categoryid: 0
+      categoryid: Number(formValue.cardCategory) 
     };
     
     this.honService.addCard(card).then(

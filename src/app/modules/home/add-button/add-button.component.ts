@@ -12,7 +12,8 @@ export class AddButtonComponent {
   @ViewChild(InsertComponent) insertComponent!: InsertComponent;
   @ViewChild(TimelineComponent) timelineComponent!: TimelineComponent;
   async submitForm(){
-    await this.insertComponent.onSubmit();
-    await this.timelineComponent.refreshCardList();
+    await this.insertComponent.onSubmit().then(
+      () => this.timelineComponent.refreshCardList() 
+    );
   }
 }
